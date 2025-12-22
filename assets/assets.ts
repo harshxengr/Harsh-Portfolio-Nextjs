@@ -17,6 +17,7 @@ import docker from './tech-stack-icons/Docker.png'
 import aws from './tech-stack-icons/aws.png'
 import kubernetes from './tech-stack-icons/Kubernetes.svg'
 import gitHubActions from './tech-stack-icons/GitHub-Actions.png'
+import bun from './tech-stack-icons/Bun.svg' 
 
 import expenseHeroImg from './projectImages/expenseHero.png'
 import pixelPayImg from './projectImages/pixelPay.png'
@@ -40,7 +41,8 @@ export const tech_stack_icons = {
     docker,
     aws,
     kubernetes,
-    gitHubActions
+    gitHubActions, 
+    bun
 }
 
 export const techStackData = [
@@ -57,6 +59,7 @@ export const techStackData = [
             { imgLink: tech_stack_icons.node, imgName: "NodeJS" },
             { imgLink: tech_stack_icons.express, imgName: "ExpressJS" },
             { imgLink: tech_stack_icons.next, imgName: "NextJS" },
+            { imgLink: tech_stack_icons.bun, imgName: "Bun" },
             { imgLink: tech_stack_icons.tailwindcss, imgName: "TailwindCSS" },
             { imgLink: tech_stack_icons.shadcn, imgName: "Shadcn/ui" },
             { imgLink: tech_stack_icons.framer, imgName: "Framer" },
