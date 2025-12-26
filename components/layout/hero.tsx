@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import profileImg from "@/public/images/profile-img.png"
-import bgCoverImg from "@/public/images/profile-bg-cover.jpg"
+import bgCoverImg from "@/public/images/profile-bg-cover.png"
 import ThemeModeToggle from '@/components/shared/theme-mode-toggle'
 import { BorderTrail } from '../motion-primitives/border-trail'
 import { ProfileUpdateTime } from '../sections/profile-update-time'
@@ -12,14 +12,16 @@ import About from '../sections/About'
 const Hero = () => {
     return (
         <section id='home' className="relative w-full mx-auto overflow-hidden">
-            <Image
-                className="h-32 sm:h-40 md:h-48 w-full object-cover"
-                src={bgCoverImg}
-                alt="Bg-cover"
-                width={1200}
-                height={256}
-                priority
-            />
+            <div className="relative h-32 sm:h-40 md:h-48 lg:h-60 xl:h-72 w-full">
+                <Image
+                    src={bgCoverImg}
+                    alt="Bg-cover"
+                    fill
+                    className="object-cover"
+                    priority
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 1200px"
+                />
+            </div>
             <div className='relative px-6 md:px-8 lg:px-12 flex flex-col gap-4 md:gap-8 lg:gap-12 justify-between'>
                 <div className='flex flex-col gap-2 justify-between'>
                     <motion.div
