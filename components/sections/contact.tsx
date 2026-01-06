@@ -91,11 +91,10 @@ const Contact = () => {
                 transition={{ duration: 0.4, delay: 0.6 }}
                 className="text-center max-w-2xl mx-auto mt-6 sm:mt-8 lg:mt-10 text-sm sm:text-base text-muted-foreground leading-relaxed px-4"
             >
-                I&apos;m always open to discussing new projects, creative ideas, or opportunities to be part of your vision.
-                Feel free to reach out — I&apos;d love to hear from you.
+                I&apos;m always open to discussing new projects, creative collaborations, or opportunities to bring your vision to life. If you think I&apos;d be a good fit for your vision — reach out anytime.
             </motion.p>
 
-            <motion.form
+            {/* <motion.form
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 transition={{ duration: 0.4, delay: 0.8 }}
@@ -188,7 +187,7 @@ const Contact = () => {
                         {result}
                     </motion.p>
                 )}
-            </motion.form>
+            </motion.form> */}
 
             <div className="mt-20">
                 <DockContact />
