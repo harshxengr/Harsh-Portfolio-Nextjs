@@ -1,199 +1,145 @@
-"use client"
-
-import { FormEvent, useState } from "react";
+import { Dock, DockIcon, DockItem, DockLabel } from "../motion-primitives/dock";
+import Link from "next/link";
 import { motion } from "motion/react";
-import { TextMorph } from "../motion-primitives/text-morph";
-import { GlowEffect } from "../motion-primitives/glow-effect";
-import { ArrowRight } from "lucide-react";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Button } from "@/components/ui/button";
-import { DockContact } from "./dock-contact";
-
-const Inputbox = [
-    {
-        type: "text",
-        placeholder: "Enter your name",
-        name: "name"
-    },
-    {
-        type: "email",
-        placeholder: "Enter your email",
-        name: "email"
-    }
-];
+import { Github, Linkedin, Mail, Twitter, Copy, Check } from "lucide-react";
+import { useState } from "react";
+import { Button } from "../ui/button";
 
 const Contact = () => {
-    const [result, setResult] = useState<string>("");
-    const [isSubmitting, setIsSubmitting] = useState(false);
-    const [formData, setFormData] = useState({ name: "", email: "", message: "" });
+	const [copied, setCopied] = useState(false);
+	const email = "singhharshsaini7@gmail.com";
 
-    const onSubmit = async (event: FormEvent<HTMLFormElement>) => {
-        event.preventDefault();
-        setIsSubmitting(true);
-        setResult("Sending....");
-        const submitFormData = new FormData();
-        submitFormData.append("name", formData.name);
-        submitFormData.append("email", formData.email);
-        submitFormData.append("message", formData.message);
-        submitFormData.append("access_key", "0e47333c-c3a5-4474-b384-00e5269ef54f");
+	const handleCopyEmail = () => {
+		navigator.clipboard.writeText(email);
+		setCopied(true);
+		setTimeout(() => setCopied(false), 2000);
+	};
 
-        const response = await fetch("https://api.web3forms.com/submit", {
-            method: "POST",
-            body: submitFormData
-        });
+	const socialLinks = [
+		{
+			title: "GitHub",
+			icon: <Github />,
+			href: "https://github.com/harshxengr",
+		},
+		{
+			title: "Twitter",
+			icon: <Twitter />,
+			href: "https://x.com/harshxengr",
+		},
+		{
+			title: "LinkedIn",
+			icon: <Linkedin />,
+			href: "https://www.linkedin.com/in/harshxengr/",
+		},
+		{
+			title: "Mail",
+			icon: <Mail />,
+			href: "mailto:singhharshsaini7@gmail.com",
+		},
+	];
 
-        const data = await response.json();
+	return (
+		<div className="w-full text-zinc-100 selection:bg-blue-500/30">
+			<div className="fixed inset-0 overflow-hidden pointer-events-none">
+				<div className="absolute -top-24 -left-24 h-96 w-96 rounded-full bg-blue-600/10 blur-[120px]" />
+				<div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[500px] w-[500px] rounded-full bg-purple-600/5 blur-[140px]" />
+			</div>
 
-        if (data.success) {
-            setResult("Form Submitted Successfully");
-            setIsSubmitting(false);
-            setFormData({ name: "", email: "", message: "" }); // controlled reset
-            setTimeout(() => {
-                setResult("");
-            }, 3000);
-        } else {
-            console.log("Error", data);
-            setResult(data.message);
-            setIsSubmitting(false);
-        }
-    };
+			<motion.section
+				initial={{ opacity: 0 }}
+				whileInView={{ opacity: 1 }}
+				transition={{ duration: 1 }}
+				id="contact"
+				className="relative z-10 mx-auto flex max-w-4xl flex-col items-center justify-center px-6 py-24 sm:py-32"
+			>
+				<div className="text-center">
+					<motion.span
+						initial={{ opacity: 0, y: 10 }}
+						whileInView={{ opacity: 1, y: 0 }}
+						className="inline-block rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium tracking-wider uppercase text-blue-400"
+					>
+						Available for opportunities
+					</motion.span>
 
-    return (
-        <motion.section
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 1 }}
-            id="contact"
-            className="w-full scroll-mt-20 md:px-4 lg:px-8 pt-12 sm:pt-16 lg:pt-20 mx-auto flex flex-col justify-between gap-4 max-w-4xl pb-8"
-        >
-            <motion.h4
-                initial={{ y: -20, opacity: 0 }}
-                whileInView={{ y: 0, opacity: 1 }}
-                transition={{ duration: 0.4, delay: 0.2 }}
-                className="text-center mb-2 text-base sm:text-lg text-muted-foreground"
-            >
-                Get in Touch
-            </motion.h4>
+					<motion.h2
+						initial={{ opacity: 0, y: 20 }}
+						whileInView={{ opacity: 1, y: 0 }}
+						transition={{ delay: 0.1 }}
+						className="mt-6 text-5xl font-bold tracking-tight sm:text-7xl"
+					>
+						Let&apos;s build something{" "}
+						<span className="bg-linear-to-r from-blue-400 via-indigo-400 to-purple-400 bg-clip-text text-transparent">
+							Together
+						</span>
+					</motion.h2>
 
-            <motion.h2
-                initial={{ y: -20, opacity: 0 }}
-                whileInView={{ y: 0, opacity: 1 }}
-                transition={{ duration: 0.4, delay: 0.4 }}
-                className="text-center w-full text-4xl md:text-5xl font-bold text-foreground"
-            >
-                Let&apos;s Connect
-            </motion.h2>
+					<motion.p
+						initial={{ opacity: 0, y: 20 }}
+						whileInView={{ opacity: 1, y: 0 }}
+						transition={{ delay: 0.2 }}
+						className="mx-auto mt-6 max-w-xl text-lg text-zinc-400 leading-relaxed"
+					>
+						I&apos;m always open to discussing new projects, creative collaborations,
+						or opportunities to bring your vision to life.
+					</motion.p>
+				</div>
 
-            <motion.p
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                transition={{ duration: 0.4, delay: 0.6 }}
-                className="text-center max-w-2xl mx-auto mt-6 sm:mt-8 lg:mt-10 text-sm sm:text-base text-muted-foreground leading-relaxed px-4"
-            >
-                I&apos;m always open to discussing new projects, creative collaborations, or opportunities to bring your vision to life. If you think I&apos;d be a good fit for your vision — reach out anytime.
-            </motion.p>
+				<motion.div
+					initial={{ opacity: 0, scale: 0.95 }}
+					whileInView={{ opacity: 1, scale: 1 }}
+					transition={{ delay: 0.3 }}
+					className="mt-12 flex flex-col items-center gap-6"
+				>
+					<div className="group relative flex items-center gap-4 rounded-2xl border border-white/10 bg-white/5 p-4 pr-6 transition-all hover:bg-white/8">
+						<div className="flex h-12 w-12 items-center justify-center rounded-xl bg-blue-500/20 text-blue-400">
+							<Mail size={24} />
+						</div>
+						<div className="flex flex-col">
+							<span className="text-xs font-medium text-zinc-500 uppercase tracking-tight">
+								Email Me
+							</span>
+							<span className="text-base font-semibold text-zinc-200">
+								{email}
+							</span>
+						</div>
+						<Button
+							onClick={handleCopyEmail}
+							className="ml-4 flex h-8 w-8 items-center justify-center rounded-lg bg-zinc-800 text-zinc-400 transition-colors hover:bg-zinc-700 hover:text-white"
+						>
+							{copied ? (
+								<Check size={16} className="text-green-400" />
+							) : (
+								<Copy size={16} />
+							)}
+						</Button>
+					</div>
+				</motion.div>
 
-            {/* <motion.form
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                transition={{ duration: 0.4, delay: 0.8 }}
-                onSubmit={onSubmit}
-                className="w-full mt-4 sm:mt-6"
-            >
-                <div className="relative gap-4 sm:gap-5 my-6 sm:my-8 flex flex-col justify-between">
-                    <motion.div
-                        className="pointer-events-none absolute inset-0 rounded-xl"
-                        animate={{
-                            opacity: isSubmitting ? 1 : 0,
-                        }}
-                        transition={{
-                            duration: 0.3,
-                            ease: "easeOut",
-                        }}
-                    >
-                        <GlowEffect
-                            mode="rotate"
-                            blur="softest"
-                            duration={4}
-                        />
-                    </motion.div>
-
-                    {Inputbox.map((i, index) => (
-                        <motion.div
-                            key={i.name}
-                            initial={{ x: -50, opacity: 0 }}
-                            whileInView={{ x: 0, opacity: 1 }}
-                            transition={{ duration: 0.5, delay: 1.0 + index * 0.1 }}
-                            className="w-full"
-                        >
-                            <Input
-                                type={i.type}
-                                placeholder={i.placeholder}
-                                name={i.name}
-                                required
-                                value={formData[i.name as keyof typeof formData]}
-                                onChange={e => setFormData({ ...formData, [i.name]: e.target.value })}
-                                className="relative w-full p-3 sm:p-4 outline-none border border-input rounded-md bg-background text-foreground placeholder:text-muted-foreground focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 transition-all"
-                            />
-                        </motion.div>
-                    ))}
-
-                    <motion.div
-                        initial={{ y: 100, opacity: 0 }}
-                        whileInView={{ y: 0, opacity: 1 }}
-                        transition={{ duration: 0.5, delay: 1.2 }}
-                        className="w-full"
-                    >
-                        <Textarea
-                            placeholder="Enter your message"
-                            name="message"
-                            required
-                            value={formData.message}
-                            onChange={e => setFormData({ ...formData, message: e.target.value })}
-                            className="relative w-full overflow-hidden min-h-48 p-3 sm:p-4 outline-none border border-input rounded-md bg-background text-foreground placeholder:text-muted-foreground focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 transition-all"
-                        />
-                    </motion.div>
-                </div>
-
-                <motion.div
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                    transition={{ duration: 0.2 }}
-                    className="relative w-full"
-                >
-                    <GlowEffect
-                        mode="colorShift"
-                        blur="soft"
-                        duration={3}
-                        scale={0.9}
-                    />
-                    <Button
-                        type="submit"
-                        disabled={isSubmitting}
-                        className="relative w-full inline-flex items-center justify-center gap-2 rounded-md bg-primary px-6 py-3 sm:py-4 text-sm sm:text-base font-medium text-primary-foreground hover:bg-primary/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-                    >
-                        <TextMorph>{isSubmitting ? "Submitting..." : "Submit"}</TextMorph>
-                        <ArrowRight className="h-4 w-4" />
-                    </Button>
-                </motion.div>
-
-                {result && (
-                    <motion.p
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        className="mt-4 text-center text-sm sm:text-base text-muted-foreground"
-                    >
-                        {result}
-                    </motion.p>
-                )}
-            </motion.form> */}
-
-            <div className="mt-20">
-                <DockContact />
-            </div>
-        </motion.section>
-    );
+				<motion.div
+					initial={{ opacity: 0, y: 40 }}
+					whileInView={{ opacity: 1, y: 0 }}
+					transition={{ delay: 0.4, type: "spring", damping: 20 }}
+					className="mt-24 sm:mt-32"
+				>
+					<Dock className="items-end pb-3">
+						{socialLinks.map((item) => (
+							<Link
+								key={item.href}
+								href={item.href}
+								target="_blank"
+								rel="noopener noreferrer"
+							>
+								<DockItem className="aspect-square cursor-pointer rounded-full bg-card border border-border shadow-sm">
+									<DockLabel>{item.title}</DockLabel>
+									<DockIcon>{item.icon}</DockIcon>
+								</DockItem>
+							</Link>
+						))}
+					</Dock>
+				</motion.div>
+			</motion.section>
+		</div>
+	);
 };
 
 export default Contact;
