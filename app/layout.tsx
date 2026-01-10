@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import GridPattern from "@/components/shared/grid-pattern";
 import ThemeProvider from "@/components/shared/theme-provider";
+import { SmoothScroll } from "@/components/shared/smooth-scroll";
 
 export const metadata: Metadata = {
 	title: "Harsh - Portfolio",
-	description: "Harsh Portfolio using Nextjs",
+	description: "Full Stack Engineer & Architect Portfolio",
 	icons: {
 		icon: "/favicon.ico",
 	},
@@ -25,11 +25,8 @@ export default function RootLayout({
 					enableSystem
 					disableTransitionOnChange
 				>
-					<div className="w-full mx-auto md:w-5/6 lg:w-3/4 xl:w-3/5">
-						<section className="min-h-screen w-full relative">
-							<GridPattern />
-							<div className="relative z-10">{children}</div>
-						</section>
+					<div className="relative w-full min-h-screen">
+						<SmoothScroll>{children}</SmoothScroll>
 					</div>
 				</ThemeProvider>
 			</body>
