@@ -1,199 +1,100 @@
-"use client"
+"use client";
 
-import { FormEvent, useState } from "react";
 import { motion } from "motion/react";
-import { TextMorph } from "../motion-primitives/text-morph";
-import { GlowEffect } from "../motion-primitives/glow-effect";
-import { ArrowRight } from "lucide-react";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Button } from "@/components/ui/button";
-import { DockContact } from "./dock-contact";
-
-const Inputbox = [
-    {
-        type: "text",
-        placeholder: "Enter your name",
-        name: "name"
-    },
-    {
-        type: "email",
-        placeholder: "Enter your email",
-        name: "email"
-    }
-];
+import Link from "next/link";
+import { ArrowUpRight, Copy, Check } from "lucide-react";
+import { useState } from "react";
 
 const Contact = () => {
-    const [result, setResult] = useState<string>("");
-    const [isSubmitting, setIsSubmitting] = useState(false);
-    const [formData, setFormData] = useState({ name: "", email: "", message: "" });
+	const [copied, setCopied] = useState(false);
+	const email = "singhharshsaini7@gmail.com";
 
-    const onSubmit = async (event: FormEvent<HTMLFormElement>) => {
-        event.preventDefault();
-        setIsSubmitting(true);
-        setResult("Sending....");
-        const submitFormData = new FormData();
-        submitFormData.append("name", formData.name);
-        submitFormData.append("email", formData.email);
-        submitFormData.append("message", formData.message);
-        submitFormData.append("access_key", "0e47333c-c3a5-4474-b384-00e5269ef54f");
+	const handleCopy = () => {
+		navigator.clipboard.writeText(email);
+		setCopied(true);
+		setTimeout(() => setCopied(false), 2000);
+	};
 
-        const response = await fetch("https://api.web3forms.com/submit", {
-            method: "POST",
-            body: submitFormData
-        });
+	return (
+		<section
+			id="contact"
+			className="w-full py-24 px-6 md:px-12 lg:px-24 bg-background"
+		>
+			<div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16">
+				<motion.div
+					initial={{ opacity: 0, y: 20 }}
+					whileInView={{ opacity: 1, y: 0 }}
+					viewport={{ once: true }}
+				>
+					<h2 className="text-sm font-mono font-medium text-muted-foreground tracking-widest uppercase mb-4">
+						Contact
+					</h2>
+					<h3 className="text-5xl md:text-7xl font-bold text-foreground tracking-tighter mb-8 max-w-lg">
+						Let&apos;s build something together.
+					</h3>
+					<p className="text-xl text-muted-foreground leading-relaxed max-w-md">
+						Currently available for full stack engineering & devops roles.
+					</p>
+				</motion.div>
 
-        const data = await response.json();
+				<motion.div
+					initial={{ opacity: 0, y: 20 }}
+					whileInView={{ opacity: 1, y: 0 }}
+					viewport={{ once: true }}
+					transition={{ delay: 0.2 }}
+					className="flex flex-col justify-between"
+				>
+					<div className="space-y-8">
+						<div>
+							<h4 className="text-sm font-medium text-muted-foreground uppercase tracking-wider mb-2">
+								Email
+							</h4>
+							<div className="flex items-center gap-4 group cursor-pointer" onClick={handleCopy}>
+								<span className="text-2xl md:text-3xl font-medium text-foreground hover:underline decoration-1 underline-offset-4">
+									{email}
+								</span>
+								<button
+									className="p-2 rounded-full hover:bg-muted transition-colors text-muted-foreground"
+									aria-label="Copy Email"
+								>
+									{copied ? <Check className="w-5 h-5" /> : <Copy className="w-5 h-5" />}
+								</button>
+							</div>
+						</div>
 
-        if (data.success) {
-            setResult("Form Submitted Successfully");
-            setIsSubmitting(false);
-            setFormData({ name: "", email: "", message: "" }); // controlled reset
-            setTimeout(() => {
-                setResult("");
-            }, 3000);
-        } else {
-            console.log("Error", data);
-            setResult(data.message);
-            setIsSubmitting(false);
-        }
-    };
+						<div>
+							<h4 className="text-sm font-medium text-muted-foreground uppercase tracking-wider mb-4">
+								Socials
+							</h4>
+							<div className="flex gap-6">
+								{[
+									{ name: "GitHub", href: "https://github.com/harshxengr" },
+									{ name: "LinkedIn", href: "https://www.linkedin.com/in/harshxengr/" },
+									{ name: "Twitter", href: "https://x.com/harshxengr" },
+								].map((social) => (
+									<Link
+										key={social.name}
+										href={social.href}
+										target="_blank"
+										className="text-lg text-foreground hover:text-muted-foreground transition-colors flex items-center gap-1"
+									>
+										{social.name}
+										<ArrowUpRight className="w-4 h-4" />
+									</Link>
+								))}
+							</div>
+						</div>
+					</div>
 
-    return (
-        <motion.section
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 1 }}
-            id="contact"
-            className="w-full scroll-mt-20 md:px-4 lg:px-8 pt-12 sm:pt-16 lg:pt-20 mx-auto flex flex-col justify-between gap-4 max-w-4xl pb-8"
-        >
-            <motion.h4
-                initial={{ y: -20, opacity: 0 }}
-                whileInView={{ y: 0, opacity: 1 }}
-                transition={{ duration: 0.4, delay: 0.2 }}
-                className="text-center mb-2 text-base sm:text-lg text-muted-foreground"
-            >
-                Get in Touch
-            </motion.h4>
-
-            <motion.h2
-                initial={{ y: -20, opacity: 0 }}
-                whileInView={{ y: 0, opacity: 1 }}
-                transition={{ duration: 0.4, delay: 0.4 }}
-                className="text-center w-full text-4xl md:text-5xl font-bold text-foreground"
-            >
-                Let&apos;s Connect
-            </motion.h2>
-
-            <motion.p
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                transition={{ duration: 0.4, delay: 0.6 }}
-                className="text-center max-w-2xl mx-auto mt-6 sm:mt-8 lg:mt-10 text-sm sm:text-base text-muted-foreground leading-relaxed px-4"
-            >
-                I&apos;m always open to discussing new projects, creative collaborations, or opportunities to bring your vision to life. If you think I&apos;d be a good fit for your vision — reach out anytime.
-            </motion.p>
-
-            {/* <motion.form
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                transition={{ duration: 0.4, delay: 0.8 }}
-                onSubmit={onSubmit}
-                className="w-full mt-4 sm:mt-6"
-            >
-                <div className="relative gap-4 sm:gap-5 my-6 sm:my-8 flex flex-col justify-between">
-                    <motion.div
-                        className="pointer-events-none absolute inset-0 rounded-xl"
-                        animate={{
-                            opacity: isSubmitting ? 1 : 0,
-                        }}
-                        transition={{
-                            duration: 0.3,
-                            ease: "easeOut",
-                        }}
-                    >
-                        <GlowEffect
-                            mode="rotate"
-                            blur="softest"
-                            duration={4}
-                        />
-                    </motion.div>
-
-                    {Inputbox.map((i, index) => (
-                        <motion.div
-                            key={i.name}
-                            initial={{ x: -50, opacity: 0 }}
-                            whileInView={{ x: 0, opacity: 1 }}
-                            transition={{ duration: 0.5, delay: 1.0 + index * 0.1 }}
-                            className="w-full"
-                        >
-                            <Input
-                                type={i.type}
-                                placeholder={i.placeholder}
-                                name={i.name}
-                                required
-                                value={formData[i.name as keyof typeof formData]}
-                                onChange={e => setFormData({ ...formData, [i.name]: e.target.value })}
-                                className="relative w-full p-3 sm:p-4 outline-none border border-input rounded-md bg-background text-foreground placeholder:text-muted-foreground focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 transition-all"
-                            />
-                        </motion.div>
-                    ))}
-
-                    <motion.div
-                        initial={{ y: 100, opacity: 0 }}
-                        whileInView={{ y: 0, opacity: 1 }}
-                        transition={{ duration: 0.5, delay: 1.2 }}
-                        className="w-full"
-                    >
-                        <Textarea
-                            placeholder="Enter your message"
-                            name="message"
-                            required
-                            value={formData.message}
-                            onChange={e => setFormData({ ...formData, message: e.target.value })}
-                            className="relative w-full overflow-hidden min-h-48 p-3 sm:p-4 outline-none border border-input rounded-md bg-background text-foreground placeholder:text-muted-foreground focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 transition-all"
-                        />
-                    </motion.div>
-                </div>
-
-                <motion.div
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                    transition={{ duration: 0.2 }}
-                    className="relative w-full"
-                >
-                    <GlowEffect
-                        mode="colorShift"
-                        blur="soft"
-                        duration={3}
-                        scale={0.9}
-                    />
-                    <Button
-                        type="submit"
-                        disabled={isSubmitting}
-                        className="relative w-full inline-flex items-center justify-center gap-2 rounded-md bg-primary px-6 py-3 sm:py-4 text-sm sm:text-base font-medium text-primary-foreground hover:bg-primary/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-                    >
-                        <TextMorph>{isSubmitting ? "Submitting..." : "Submit"}</TextMorph>
-                        <ArrowRight className="h-4 w-4" />
-                    </Button>
-                </motion.div>
-
-                {result && (
-                    <motion.p
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        className="mt-4 text-center text-sm sm:text-base text-muted-foreground"
-                    >
-                        {result}
-                    </motion.p>
-                )}
-            </motion.form> */}
-
-            <div className="mt-20">
-                <DockContact />
-            </div>
-        </motion.section>
-    );
+					<div className="mt-16 pt-8 border-t border-border">
+						<p className="text-sm text-muted-foreground">
+							© {new Date().getFullYear()} Harsh Saini. Engineering & Automation.
+						</p>
+					</div>
+				</motion.div>
+			</div>
+		</section>
+	);
 };
 
 export default Contact;
