@@ -1,12 +1,27 @@
-import { Dock, DockIcon, DockItem, DockLabel } from "../motion-primitives/dock";
 import Link from "next/link";
 import { motion } from "motion/react";
-import { Github, Linkedin, Mail, Twitter, Copy, Check } from "lucide-react";
-import { useState } from "react";
-import { Button } from "../ui/button";
+import { Github, Linkedin, Mail, Twitter, Copy, Check, ArrowUpRight, MapPin } from "lucide-react";
+import { useState, useEffect } from "react";
+import { cn } from "@/lib/utils";
 
 const Contact = () => {
 	const [copied, setCopied] = useState(false);
+	const [time, setTime] = useState("");
+
+	useEffect(() => {
+		const updateTime = () => {
+			const now = new Date();
+			setTime(now.toLocaleTimeString("en-US", {
+				hour: "2-digit",
+				minute: "2-digit",
+				hour12: true,
+				timeZone: "Asia/Kolkata"
+			}));
+		};
+		updateTime();
+		const interval = setInterval(updateTime, 1000);
+		return () => clearInterval(interval);
+	}, []);
 	const email = "singhharshsaini7@gmail.com";
 
 	const handleCopyEmail = () => {
@@ -18,127 +33,170 @@ const Contact = () => {
 	const socialLinks = [
 		{
 			title: "GitHub",
-			icon: <Github />,
+			username: "@harshxengr",
+			icon: <Github className="h-6 w-6" />,
 			href: "https://github.com/harshxengr",
+			color: "hover:border-zinc-700 hover:bg-zinc-950/30",
 		},
 		{
 			title: "Twitter",
-			icon: <Twitter />,
+			username: "@harshxengr",
+			icon: <Twitter className="h-6 w-6" />,
 			href: "https://x.com/harshxengr",
+			color: "hover:border-blue-500/50 hover:bg-blue-950/30",
 		},
 		{
 			title: "LinkedIn",
-			icon: <Linkedin />,
+			username: "Harsh Saini",
+			icon: <Linkedin className="h-6 w-6" />,
 			href: "https://www.linkedin.com/in/harshxengr/",
-		},
-		{
-			title: "Mail",
-			icon: <Mail />,
-			href: "mailto:singhharshsaini7@gmail.com",
+			color: "hover:border-blue-700/50 hover:bg-blue-900/30",
 		},
 	];
 
 	return (
-		<div className="w-full text-zinc-100 selection:bg-blue-500/30">
-			<div className="fixed inset-0 overflow-hidden pointer-events-none">
-				<div className="absolute -top-24 -left-24 h-96 w-96 rounded-full bg-blue-600/10 blur-[120px]" />
-				<div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[500px] w-[500px] rounded-full bg-purple-600/5 blur-[140px]" />
+		<section id="contact" className="relative w-full py-24 px-6 overflow-hidden">
+			{/* Background Effects */}
+			<div className="absolute inset-0 pointer-events-none">
+				<div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-blue-500/5 rounded-full blur-[120px]" />
+				<div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-purple-500/5 rounded-full blur-[100px]" />
 			</div>
 
-			<motion.section
-				initial={{ opacity: 0 }}
-				whileInView={{ opacity: 1 }}
-				transition={{ duration: 1 }}
-				id="contact"
-				className="relative z-10 mx-auto flex max-w-4xl flex-col items-center justify-center px-6 py-24 sm:py-32"
-			>
-				<div className="text-center">
-					<motion.span
-						initial={{ opacity: 0, y: 10 }}
+			<div className="relative z-10 max-w-5xl mx-auto">
+				{/* Header */}
+				<div className="flex flex-col items-center text-center mb-16">
+					<motion.div
+						initial={{ opacity: 0, y: 20 }}
 						whileInView={{ opacity: 1, y: 0 }}
-						className="inline-block rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium tracking-wider uppercase text-blue-400"
+						viewport={{ once: true }}
+						className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-sm font-medium mb-6"
 					>
+						<span className="relative flex h-2 w-2">
+							<span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
+							<span className="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
+						</span>
 						Available for opportunities
-					</motion.span>
+					</motion.div>
 
 					<motion.h2
 						initial={{ opacity: 0, y: 20 }}
 						whileInView={{ opacity: 1, y: 0 }}
+						viewport={{ once: true }}
 						transition={{ delay: 0.1 }}
-						className="mt-6 text-5xl font-bold tracking-tight sm:text-7xl"
+						className="text-4xl md:text-6xl font-bold text-foreground tracking-tight"
 					>
-						Let&apos;s build something{" "}
-						<span className="bg-linear-to-r from-blue-400 via-indigo-400 to-purple-400 bg-clip-text text-transparent">
-							Together
-						</span>
+						Let's work <span className="text-zinc-500">together.</span>
 					</motion.h2>
 
 					<motion.p
 						initial={{ opacity: 0, y: 20 }}
 						whileInView={{ opacity: 1, y: 0 }}
+						viewport={{ once: true }}
 						transition={{ delay: 0.2 }}
-						className="mx-auto mt-6 max-w-xl text-lg text-zinc-400 leading-relaxed"
+						className="mt-4 text-zinc-400 max-w-lg text-lg"
 					>
-						I&apos;m always open to discussing new projects, creative collaborations,
-						or opportunities to bring your vision to life.
+						Have a project in mind? Let's turn your ideas into reality.
 					</motion.p>
 				</div>
 
-				<motion.div
-					initial={{ opacity: 0, scale: 0.95 }}
-					whileInView={{ opacity: 1, scale: 1 }}
-					transition={{ delay: 0.3 }}
-					className="mt-12 flex flex-col items-center gap-6"
-				>
-					<div className="group relative flex items-center gap-4 rounded-2xl border border-white/10 bg-white/5 p-4 pr-6 transition-all hover:bg-white/8">
-						<div className="flex h-12 w-12 items-center justify-center rounded-xl bg-blue-500/20 text-blue-400">
-							<Mail size={24} />
-						</div>
-						<div className="flex flex-col">
-							<span className="text-xs font-medium text-zinc-500 uppercase tracking-tight">
-								Email Me
-							</span>
-							<span className="text-base font-semibold text-zinc-200">
-								{email}
-							</span>
-						</div>
-						<Button
-							onClick={handleCopyEmail}
-							className="ml-4 flex h-8 w-8 items-center justify-center rounded-lg bg-zinc-800 text-zinc-400 transition-colors hover:bg-zinc-700 hover:text-white"
-						>
-							{copied ? (
-								<Check size={16} className="text-green-400" />
-							) : (
-								<Copy size={16} />
-							)}
-						</Button>
-					</div>
-				</motion.div>
+				{/* Bento Grid */}
+				<div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
+					{/* Email Card - Large */}
+					<motion.div
+						initial={{ opacity: 0, y: 20 }}
+						whileInView={{ opacity: 1, y: 0 }}
+						viewport={{ once: true }}
+						transition={{ delay: 0.3 }}
+						className="md:col-span-2 relative group overflow-hidden rounded-3xl bg-card/50 border border-border/50 p-8 transition-all duration-500 hover:border-border hover:bg-card/80"
+					>
+						<div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
-				<motion.div
-					initial={{ opacity: 0, y: 40 }}
-					whileInView={{ opacity: 1, y: 0 }}
-					transition={{ delay: 0.4, type: "spring", damping: 20 }}
-					className="mt-24 sm:mt-32"
-				>
-					<Dock className="items-end pb-3">
-						{socialLinks.map((item) => (
+						<div className="relative z-10 flex flex-col justify-between h-full gap-8">
+							<div className="flex items-start justify-between">
+								<div className="p-3 rounded-2xl bg-muted/50 text-foreground group-hover:bg-blue-500/20 group-hover:text-blue-400 transition-colors duration-300">
+									<Mail className="h-6 w-6" />
+								</div>
+								<button
+									onClick={handleCopyEmail}
+									className="group/btn flex items-center gap-2 px-4 py-2 rounded-full bg-muted/50 text-muted-foreground hover:bg-muted hover:text-foreground transition-all active:scale-95"
+								>
+									<span className="text-sm font-medium">{copied ? "Copied!" : "Copy Email"}</span>
+									{copied ? <Check className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
+								</button>
+							</div>
+
+							<div>
+								<h3 className="text-muted-foreground font-medium mb-1">Drop me a line</h3>
+								<a href={`mailto:${email}`} className="text-xl sm:text-2xl font-semibold text-card-foreground tracking-tight hover:text-blue-400 transition-colors break-all">
+									{email}
+								</a>
+							</div>
+						</div>
+					</motion.div>
+
+					{/* Social Cards */}
+					{socialLinks.map((link, index) => (
+						<motion.div
+							key={link.title}
+							initial={{ opacity: 0, y: 20 }}
+							whileInView={{ opacity: 1, y: 0 }}
+							viewport={{ once: true }}
+							transition={{ delay: 0.4 + index * 0.1 }}
+						>
 							<Link
-								key={item.href}
-								href={item.href}
+								href={link.href}
 								target="_blank"
 								rel="noopener noreferrer"
+								className={cn(
+									"group relative flex flex-col justify-between h-full p-6 rounded-3xl bg-card/50 border border-border/50 transition-all duration-300 hover:bg-card/80",
+									link.color
+								)}
 							>
-								<DockItem className="aspect-square cursor-pointer rounded-full bg-card border border-border shadow-sm">
-									<DockLabel>{item.title}</DockLabel>
-									<DockIcon>{item.icon}</DockIcon>
-								</DockItem>
+								<div className="flex items-start justify-between mb-8">
+									<div className="p-3 rounded-2xl bg-muted/50 text-muted-foreground group-hover:bg-muted group-hover:text-foreground transition-colors">
+										{link.icon}
+									</div>
+									<ArrowUpRight className="h-5 w-5 text-muted-foreground group-hover:text-foreground group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+								</div>
+								<div>
+									<h3 className="text-card-foreground font-medium">{link.title}</h3>
+									<p className="text-muted-foreground text-sm">{link.username}</p>
+								</div>
 							</Link>
-						))}
-					</Dock>
-				</motion.div>
-			</motion.section>
-		</div>
+						</motion.div>
+					))}
+
+					{/* Location/Time Card */}
+					<motion.div
+						initial={{ opacity: 0, y: 20 }}
+						whileInView={{ opacity: 1, y: 0 }}
+						viewport={{ once: true }}
+						transition={{ delay: 0.7 }}
+						className="relative group overflow-hidden rounded-3xl bg-card/50 border border-border/50 p-6 transition-all duration-500 hover:border-border hover:bg-card/80"
+					>
+						<div className="flex flex-col justify-between h-full gap-8">
+							<div className="flex items-start justify-between">
+								<div className="p-3 rounded-2xl bg-muted/50 text-muted-foreground group-hover:bg-purple-500/20 group-hover:text-purple-400 transition-colors">
+									<MapPin className="h-6 w-6" />
+								</div>
+								<div className="flex items-center gap-2">
+									<span className="relative flex h-2 w-2">
+										<span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+										<span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+									</span>
+								</div>
+							</div>
+							<div>
+								<h3 className="text-card-foreground font-medium">New Delhi, India</h3>
+								<p className="text-2xl font-semibold text-muted-foreground tabular-nums tracking-tight">
+									{time}
+								</p>
+							</div>
+						</div>
+					</motion.div>
+				</div>
+			</div>
+		</section>
 	);
 };
 
