@@ -2,7 +2,6 @@ import aws from "./tech-stack-icons/aws.png";
 import bun from "./tech-stack-icons/Bun.svg";
 import docker from "./tech-stack-icons/Docker.png";
 import express from "./tech-stack-icons/express.png";
-import framer from "./tech-stack-icons/framer.png";
 import gitHubActions from "./tech-stack-icons/GitHub-Actions.png";
 import javascript from "./tech-stack-icons/javascript.png";
 import kubernetes from "./tech-stack-icons/Kubernetes.svg";
@@ -25,7 +24,6 @@ export const tech_stack_icons = {
 	turborepo,
 	next,
 	prisma,
-	framer,
 	shadcn,
 	express,
 	javascript,
@@ -48,7 +46,7 @@ export const techStackData = [
 		techData: [
 			{ imgLink: tech_stack_icons.javascript, imgName: "JavaScript" },
 			{ imgLink: tech_stack_icons.typescript, imgName: "TypeScript" },
-			{ imgLink: tech_stack_icons.python, imgName: "Python" },
+			// { imgLink: tech_stack_icons.python, imgName: "Python" },
 		],
 	},
 	{
@@ -61,7 +59,6 @@ export const techStackData = [
 			{ imgLink: tech_stack_icons.bun, imgName: "Bun" },
 			{ imgLink: tech_stack_icons.tailwindcss, imgName: "TailwindCSS" },
 			{ imgLink: tech_stack_icons.shadcn, imgName: "Shadcn/ui" },
-			{ imgLink: tech_stack_icons.framer, imgName: "Framer" },
 			{ imgLink: tech_stack_icons.turborepo, imgName: "Turborepo" },
 		],
 	},
@@ -69,11 +66,13 @@ export const techStackData = [
 		techType: "Databases & Infrastructure",
 		techData: [
 			{ imgLink: tech_stack_icons.mongodb, imgName: "MongoDB" },
+			{ imgLink: tech_stack_icons.mongoose, imgName: "Mongoose" },
 			{ imgLink: tech_stack_icons.postgresql, imgName: "PostgreSQL" },
 			{ imgLink: tech_stack_icons.prisma, imgName: "Prisma" },
+			{ imgLink: tech_stack_icons.gitHubActions, imgName: "GitHub Actions" },
 			{ imgLink: tech_stack_icons.aws, imgName: "AWS" },
 			{ imgLink: tech_stack_icons.docker, imgName: "Docker" },
-			{ imgLink: tech_stack_icons.kubernetes, imgName: "Kubernetes" },
+			// { imgLink: tech_stack_icons.kubernetes, imgName: "Kubernetes" },
 		],
 	},
 ];
@@ -83,7 +82,7 @@ export const projectsData = [
 		title: "ExpenseHero",
 		description:
 			"Enterprise-grade financial analytics platform featuring real-time budget tracking, predictive modeling, and granular reporting dashboards. Architected for scalability and data integrity.",
-		techUsed: ["TypeScript", "NextJS", "NodeJS", "PostgreSQL", "Prisma", "TailwindCSS", "Shadcn/ui", "BetterAuth"],
+		techUsed: ["TypeScript", "NextJS", "NodeJS", "PostgreSQL", "Prisma", "TailwindCSS", "Shadcn/ui", "BetterAuth", "Gemini API"],
 		githubLink: "https://github.com/harshxengr/Expense-Hero",
 		liveLink: "https://expense-hero-harsh.vercel.app/",
 	},
@@ -91,8 +90,16 @@ export const projectsData = [
 		title: "PixelPay",
 		description:
 			"Secure digital payments gateway supporting multi-currency transactions, fraud detection, and seamless third-party integrations. Built with a focus on security compliance and low-latency processing.",
-		techUsed: ["TypeScript", "NextJS", "NodeJS", "PostgreSQL", "Prisma", "TailwindCSS", "Shadcn/ui", "TurboRepo", "ExpressJS"],
+		techUsed: ["TypeScript", "NextJS", "NodeJS", "ExpressJS", "PostgreSQL", "Prisma", "TailwindCSS", "Shadcn/ui", "TurboRepo"],
 		githubLink: "https://github.com/harshxengr/PixelPay",
 		liveLink: "",
 	},
+	{
+		title: "Support Ticket System",
+		description:
+			"Support Ticket System from scratch. Users can submit support tickets, browse and filter them, and view aggregated metrics. The twist: when a ticket is submitted, an LLM automatically categorizes it and suggests a priority level based on the description — the user can then review and override these suggestions.",
+		techUsed: ["JavaScript", "React", "NodeJS", "ExpressJS", "PostgreSQL", "Prisma", "Gemini API"],
+		githubLink: "https://github.com/harshxengr/Support-Ticket-System",
+		liveLink: "",
+	}
 ];
