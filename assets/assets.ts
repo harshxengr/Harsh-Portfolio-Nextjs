@@ -65,8 +65,6 @@ export const techStackData = [
 	{
 		techType: "Databases & Infrastructure",
 		techData: [
-			{ imgLink: tech_stack_icons.mongodb, imgName: "MongoDB" },
-			{ imgLink: tech_stack_icons.mongoose, imgName: "Mongoose" },
 			{ imgLink: tech_stack_icons.postgresql, imgName: "PostgreSQL" },
 			{ imgLink: tech_stack_icons.prisma, imgName: "Prisma" },
 			{ imgLink: tech_stack_icons.gitHubActions, imgName: "GitHub Actions" },
@@ -79,27 +77,52 @@ export const techStackData = [
 
 export const projectsData = [
 	{
-		title: "ExpenseHero",
+		title: "Xchng | Full-Stack Exchange Platform",
 		description:
-			"Enterprise-grade financial analytics platform featuring real-time budget tracking, predictive modeling, and granular reporting dashboards. Architected for scalability and data integrity.",
-		techUsed: ["TypeScript", "NextJS", "NodeJS", "PostgreSQL", "Prisma", "TailwindCSS", "Shadcn/ui", "BetterAuth", "Gemini API"],
-		githubLink: "https://github.com/harshxengr/Expense-Hero",
-		liveLink: "https://expense-hero-harsh.vercel.app/",
+			"Architected a modular monorepo exchange with independent layers: web, API, WebSocket server, matching engine, and DB worker. Engineered an in-memory order-matching engine supporting limit/market orders and live tickers. Built Redis pub/sub message streams for sub-50ms sync without polling.",
+		techUsed: [
+			"Turborepo",
+			"Next.js",
+			"TypeScript",
+			"Express",
+			"Redis",
+			"WebSockets",
+			"PostgreSQL",
+			"Prisma",
+		],
+		githubLink: "https://github.com/harshxengr/Xchng",
+		liveLink: "",
 	},
 	{
-		title: "PixelPay",
+		title: "PixelPay | High-Concurrency Digital Wallet",
 		description:
-			"Secure digital payments gateway supporting multi-currency transactions, fraud detection, and seamless third-party integrations. Built with a focus on security compliance and low-latency processing.",
-		techUsed: ["TypeScript", "NextJS", "NodeJS", "ExpressJS", "PostgreSQL", "Prisma", "TailwindCSS", "Shadcn/ui", "TurboRepo"],
+			"Built a peer-to-peer payment system in a Turborepo monorepo with end-to-end TypeScript type safety. Solved concurrent transfer race conditions using PostgreSQL Row-Level Locking and atomic transactions. Implemented webhook signature validation and cursor-based pagination.",
+		techUsed: [
+			"Turborepo",
+			"TypeScript",
+			"Next.js",
+			"Express",
+			"PostgreSQL",
+			"Prisma",
+			"Redis",
+		],
 		githubLink: "https://github.com/harshxengr/PixelPay",
 		liveLink: "",
 	},
 	{
-		title: "Support Ticket System",
+		title: "Expense Hero | AI-Powered Fintech SaaS",
 		description:
-			"Support Ticket System from scratch. Users can submit support tickets, browse and filter them, and view aggregated metrics. The twist: when a ticket is submitted, an LLM automatically categorizes it and suggests a priority level based on the description — the user can then review and override these suggestions.",
-		techUsed: ["JavaScript", "React", "NodeJS", "ExpressJS", "PostgreSQL", "Prisma", "Gemini API"],
-		githubLink: "https://github.com/harshxengr/Support-Ticket-System",
-		liveLink: "",
-	}
+			"Delivered a production SaaS with Gemini AI for receipt OCR and merchant categorisation, achieving 95%+ classification accuracy. Designed event-driven background workflows with Inngest for recurring billing. Hardened the API with Arcjet rate-limiting and bot protection.",
+		techUsed: [
+			"Next.js",
+			"TypeScript",
+			"Gemini AI",
+			"PostgreSQL",
+			"Prisma",
+			"Inngest",
+			"Arcjet",
+		],
+		githubLink: "https://github.com/harshxengr/Expense-Hero",
+		liveLink: "https://expense-hero-harsh.vercel.app/",
+	},
 ];

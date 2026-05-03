@@ -1,10 +1,10 @@
 "use client";
 
-import { motion, useScroll, useMotionValueEvent } from "motion/react";
-import Link from "next/link";
-import { useState } from "react";
-import { useTheme } from "next-themes";
 import { Moon, Sun } from "lucide-react";
+import { motion, useMotionValueEvent, useScroll } from "motion/react";
+import Link from "next/link";
+import { useTheme } from "next-themes";
+import { useEffect, useState } from "react";
 
 const navbarLinks = [
 	{ name: "Expertise", href: "#skills" },
@@ -18,7 +18,7 @@ const Navbar = () => {
 	const { theme, setTheme } = useTheme();
 	const [mounted, setMounted] = useState(false);
 
-	useState(() => setMounted(true));
+	useEffect(() => setMounted(true), []);
 
 	useMotionValueEvent(scrollY, "change", (latest) => {
 		const previous = scrollY.getPrevious() ?? 0;
@@ -71,6 +71,7 @@ const Navbar = () => {
 
 					{mounted && (
 						<button
+							type="button"
 							onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
 							className="p-2 text-muted-foreground hover:text-foreground transition-colors"
 							aria-label="Toggle Theme"

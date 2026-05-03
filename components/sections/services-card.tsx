@@ -1,32 +1,32 @@
 "use client";
 
-import { motion } from "motion/react";
 import { ArrowUpRight } from "lucide-react";
+import { motion } from "motion/react";
 
 const services = [
 	{
 		id: "01",
-		title: "Frontend Architecture",
+		title: "API Design & Architecture",
 		description:
-			"Building responsive, accessible, and performant user interfaces using modern React patterns and state management strategies.",
+			"Designing robust APIs and microservices. Focusing on scalability, high-concurrency database design, and secure authentication flows.",
 	},
 	{
 		id: "02",
-		title: "Backend Systems",
+		title: "System Design Thinking",
 		description:
-			"Designing robust APIs and microservices. Focusing on scalability, database optimization, and secure authentication flows.",
+			"Translating business requirements into scalable architectures. Building event-driven workflows and real-time infrastructure.",
 	},
 	{
 		id: "03",
-		title: "Cloud Infrastructure",
+		title: "Performance Profiling",
 		description:
-			"Orchestrating containerized deployments via Docker and Kubernetes. Implementing CICD pipelines for automated delivery.",
+			"Optimising query latency, reducing debugging cycles, and ensuring sub-50ms sync without polling for real-time applications.",
 	},
 	{
 		id: "04",
-		title: "Technical Strategy",
+		title: "Rapid Prototyping",
 		description:
-			"Translating business requirements into technical roadmaps. Selecting the right tools and patterns for long-term success.",
+			"Delivering production-grade applications quickly with monorepo setups, containerised deployments, and AI integration.",
 	},
 ];
 

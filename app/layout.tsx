@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import ThemeProvider from "@/components/shared/theme-provider";
 import { SmoothScroll } from "@/components/shared/smooth-scroll";
+import ThemeProvider from "@/components/shared/theme-provider";
 
 export const metadata: Metadata = {
 	title: "Harsh - Portfolio",

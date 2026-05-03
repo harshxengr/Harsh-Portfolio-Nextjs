@@ -1,8 +1,8 @@
 "use client";
 
+import { ArrowUpRight, Check, Copy } from "lucide-react";
 import { motion } from "motion/react";
 import Link from "next/link";
-import { ArrowUpRight, Copy, Check } from "lucide-react";
 import { useState } from "react";
 
 const Contact = () => {
@@ -49,17 +49,23 @@ const Contact = () => {
 							<h4 className="text-sm font-medium text-muted-foreground uppercase tracking-wider mb-2">
 								Email
 							</h4>
-							<div className="flex items-center gap-4 group cursor-pointer" onClick={handleCopy}>
+							<button
+								type="button"
+								className="flex items-center gap-4 group cursor-pointer text-left"
+								onClick={handleCopy}
+							>
 								<span className="text-2xl md:text-3xl font-medium text-foreground hover:underline decoration-1 underline-offset-4">
 									{email}
 								</span>
-								<button
-									className="p-2 rounded-full hover:bg-muted transition-colors text-muted-foreground"
-									aria-label="Copy Email"
-								>
-									{copied ? <Check className="w-5 h-5" /> : <Copy className="w-5 h-5" />}
-								</button>
-							</div>
+								<div className="p-2 rounded-full hover:bg-muted transition-colors text-muted-foreground">
+									<span className="sr-only">Copy Email</span>
+									{copied ? (
+										<Check className="w-5 h-5" />
+									) : (
+										<Copy className="w-5 h-5" />
+									)}
+								</div>
+							</button>
 						</div>
 
 						<div>
@@ -69,7 +75,10 @@ const Contact = () => {
 							<div className="flex gap-6">
 								{[
 									{ name: "GitHub", href: "https://github.com/harshxengr" },
-									{ name: "LinkedIn", href: "https://www.linkedin.com/in/harshxengr/" },
+									{
+										name: "LinkedIn",
+										href: "https://www.linkedin.com/in/harshxengr/",
+									},
 									{ name: "Twitter", href: "https://x.com/harshxengr" },
 								].map((social) => (
 									<Link
@@ -88,7 +97,8 @@ const Contact = () => {
 
 					<div className="mt-16 pt-8 border-t border-border">
 						<p className="text-sm text-muted-foreground">
-							© {new Date().getFullYear()} Harsh Saini. Engineering & Automation.
+							© {new Date().getFullYear()} Harsh Saini. Engineering &
+							Automation.
 						</p>
 					</div>
 				</motion.div>

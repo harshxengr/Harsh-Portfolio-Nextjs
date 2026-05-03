@@ -4,170 +4,173 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
+	--radius-sm: calc(var(--radius) - 4px);
+	--radius-md: calc(var(--radius) - 2px);
+	--radius-lg: var(--radius);
+	--radius-xl: calc(var(--radius) + 4px);
 
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+	--color-background: var(--background);
+	--color-foreground: var(--foreground);
 
-  --color-card: var(--card);
-  --color-card-foreground: var(--card-foreground);
+	--color-card: var(--card);
+	--color-card-foreground: var(--card-foreground);
 
-  --color-popover: var(--popover);
-  --color-popover-foreground: var(--popover-foreground);
+	--color-popover: var(--popover);
+	--color-popover-foreground: var(--popover-foreground);
 
-  --color-primary: var(--primary);
-  --color-primary-foreground: var(--primary-foreground);
+	--color-primary: var(--primary);
+	--color-primary-foreground: var(--primary-foreground);
 
-  --color-secondary: var(--secondary);
-  --color-secondary-foreground: var(--secondary-foreground);
+	--color-secondary: var(--secondary);
+	--color-secondary-foreground: var(--secondary-foreground);
 
-  --color-muted: var(--muted);
-  --color-muted-foreground: var(--muted-foreground);
+	--color-muted: var(--muted);
+	--color-muted-foreground: var(--muted-foreground);
 
-  --color-accent: var(--accent);
-  --color-accent-foreground: var(--accent-foreground);
+	--color-accent: var(--accent);
+	--color-accent-foreground: var(--accent-foreground);
 
-  --color-destructive: var(--destructive);
-  --color-destructive-foreground: var(--destructive-foreground);
+	--color-destructive: var(--destructive);
+	--color-destructive-foreground: var(--destructive-foreground);
 
-  --color-border: var(--border);
-  --color-input: var(--input);
-  --color-ring: var(--ring);
+	--color-border: var(--border);
+	--color-input: var(--input);
+	--color-ring: var(--ring);
 
-  --animate-fade-in-up: fade-in-up 0.8s ease-out forwards;
-  --animate-fade-in: fade-in 1s ease-out forwards;
-  --animate-slide-in-right: slide-in-right 0.6s ease-out forwards;
+	--animate-fade-in-up: fade-in-up 0.8s ease-out forwards;
+	--animate-fade-in: fade-in 1s ease-out forwards;
+	--animate-slide-in-right: slide-in-right 0.6s ease-out forwards;
 
-  @keyframes fade-in-up {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
+	@keyframes fade-in-up {
+		from {
+			opacity: 0;
+			transform: translateY(20px);
+		}
 
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
 
-  @keyframes fade-in {
-    from {
-      opacity: 0;
-    }
+	@keyframes fade-in {
+		from {
+			opacity: 0;
+		}
 
-    to {
-      opacity: 1;
-    }
-  }
+		to {
+			opacity: 1;
+		}
+	}
 
-  @keyframes slide-in-right {
-    from {
-      opacity: 0;
-      transform: translateX(-20px);
-    }
+	@keyframes slide-in-right {
+		from {
+			opacity: 0;
+			transform: translateX(-20px);
+		}
 
-    to {
-      opacity: 1;
-      transform: translateX(0);
-    }
-  }
+		to {
+			opacity: 1;
+			transform: translateX(0);
+		}
+	}
 }
 
 :root {
-  --radius: 0rem;
+	--radius: 0rem;
 
-  --background: 210 20% 98%;
-  --foreground: 220 15% 10%;
+	--background: 210 20% 98%;
+	--foreground: 220 15% 10%;
 
-  --card: 0 0% 100%;
-  --card-foreground: 220 15% 10%;
+	--card: 0 0% 100%;
+	--card-foreground: 220 15% 10%;
 
-  --popover: 0 0% 100%;
-  --popover-foreground: 220 15% 10%;
+	--popover: 0 0% 100%;
+	--popover-foreground: 220 15% 10%;
 
-  --primary: 220 15% 10%;
-  --primary-foreground: 210 20% 98%;
+	--primary: 220 15% 10%;
+	--primary-foreground: 210 20% 98%;
 
-  --secondary: 220 10% 90%;
-  --secondary-foreground: 220 15% 10%;
+	--secondary: 220 10% 90%;
+	--secondary-foreground: 220 15% 10%;
 
-  --muted: 220 10% 94%;
-  --muted-foreground: 220 5% 45%;
+	--muted: 220 10% 94%;
+	--muted-foreground: 220 5% 45%;
 
-  --accent: 220 10% 90%;
-  --accent-foreground: 220 15% 10%;
+	--accent: 220 10% 90%;
+	--accent-foreground: 220 15% 10%;
 
-  --destructive: 0 84.2% 60.2%;
-  --destructive-foreground: 0 0% 98%;
+	--destructive: 0 84.2% 60.2%;
+	--destructive-foreground: 0 0% 98%;
 
-  --border: 220 10% 90%;
-  --input: 220 10% 90%;
-  --ring: 220 15% 10%;
+	--border: 220 10% 90%;
+	--input: 220 10% 90%;
+	--ring: 220 15% 10%;
 }
 
 .dark {
-  --background: 220 15% 8%;
-  --foreground: 220 15% 90%;
+	--background: 220 15% 8%;
+	--foreground: 220 15% 90%;
 
-  --card: 220 15% 10%;
-  --card-foreground: 220 15% 90%;
+	--card: 220 15% 10%;
+	--card-foreground: 220 15% 90%;
 
-  --popover: 220 15% 10%;
-  --popover-foreground: 220 15% 90%;
+	--popover: 220 15% 10%;
+	--popover-foreground: 220 15% 90%;
 
-  --primary: 220 15% 90%;
-  --primary-foreground: 220 15% 8%;
+	--primary: 220 15% 90%;
+	--primary-foreground: 220 15% 8%;
 
-  --secondary: 220 15% 14%;
-  --secondary-foreground: 220 15% 90%;
+	--secondary: 220 15% 14%;
+	--secondary-foreground: 220 15% 90%;
 
-  --muted: 220 15% 14%;
-  --muted-foreground: 220 10% 55%;
+	--muted: 220 15% 14%;
+	--muted-foreground: 220 10% 55%;
 
-  --accent: 220 15% 14%;
-  --accent-foreground: 220 15% 90%;
+	--accent: 220 15% 14%;
+	--accent-foreground: 220 15% 90%;
 
-  --destructive: 0 62.8% 30.6%;
-  --destructive-foreground: 0 0% 98%;
+	--destructive: 0 62.8% 30.6%;
+	--destructive-foreground: 0 0% 98%;
 
-  --border: 220 15% 16%;
-  --input: 220 15% 16%;
-  --ring: 220 15% 80%;
+	--border: 220 15% 16%;
+	--input: 220 15% 16%;
+	--ring: 220 15% 80%;
 }
 
 @layer base {
-  * {
-    @apply border-border outline-ring/50;
-  }
+	* {
+		@apply border-border outline-ring/50;
+	}
 
-  body {
-    @apply bg-background text-foreground antialiased font-sans;
-    font-feature-settings: "rlig" 1, "calt" 1, "ss01" 1;
-  }
+	body {
+		@apply bg-background text-foreground antialiased font-sans;
+		font-feature-settings:
+			"rlig" 1,
+			"calt" 1,
+			"ss01" 1;
+	}
 
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    @apply tracking-tighter text-foreground;
-  }
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		@apply tracking-tighter text-foreground;
+	}
 
-  p {
-    @apply leading-relaxed tracking-tight text-muted-foreground;
-  }
+	p {
+		@apply leading-relaxed tracking-tight text-muted-foreground;
+	}
 }
 
 @layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+	.text-balance {
+		text-wrap: balance;
+	}
 
-  .glass {
-    @apply bg-background/80 backdrop-blur-md border border-border;
-  }
+	.glass {
+		@apply bg-background/80 backdrop-blur-md border border-border;
+	}
 }
