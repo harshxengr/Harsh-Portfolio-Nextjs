@@ -51,6 +51,7 @@ const TechStack = () => {
 												src={tech.imgLink}
 												alt={tech.imgName}
 												fill
+												sizes="20px"
 												className="object-contain"
 											/>
 										</div>

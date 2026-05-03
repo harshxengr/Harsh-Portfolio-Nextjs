@@ -1,8 +1,8 @@
 "use client";
 
+import { ArrowUpRight, Github } from "lucide-react";
 import { motion } from "motion/react";
 import Link from "next/link";
-import { ArrowUpRight, Github } from "lucide-react";
 import { projectsData } from "@/assets/assets";
 
 const Projects = () => {

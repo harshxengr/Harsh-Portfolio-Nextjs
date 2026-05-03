@@ -1,8 +1,8 @@
 "use client";
 
+import { ArrowRight } from "lucide-react";
 import { motion } from "motion/react";
 import Link from "next/link";
-import { ArrowRight, Download } from "lucide-react";
 import { Button } from "../ui/button";
 
 const Hero = () => {
@@ -39,9 +39,10 @@ const Hero = () => {
 					transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
 					className="text-xl md:text-3xl text-muted-foreground max-w-3xl leading-snug mb-12"
 				>
-					Designing and engineering scalable, enterprise-grade digital systems
-					with over a year of implied expertise. Focused on performance,
-					reliability, and architectural elegance.
+					Full-Stack Developer specialising in production-grade TypeScript
+					systems — distributed backends, real-time infrastructure, and
+					AI-integrated SaaS products. Experienced in scalable monorepo
+					architecture and high-concurrency database design.
 				</motion.p>
 
 				<motion.div
@@ -59,7 +60,6 @@ const Hero = () => {
 							View Case Studies <ArrowRight className="size-5" />
 						</Link>
 					</Button>
-
 				</motion.div>
 			</div>
 
